@@ -14,6 +14,9 @@
     <div class="container">
       <h1>Todo list</h1>
 
+      <input type="text" v-model="todo">
+      <input type="submit" value="add" @click="storeTodo">
+
       <ol>
         <li v-for="todo in todos">
           {{ todo }}
@@ -27,7 +30,14 @@
     new Vue({
       el: '#app',
       data: {
+        todo: '',
         todos: ['got to the market', 'buy new book']
+      },
+      methods: {
+        storeTodo() {
+          this.todos.push(this.todo)
+          this.todo = ''
+        }
       }
     })
   </script>
